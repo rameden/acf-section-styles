@@ -33,15 +33,10 @@ if ( !class_exists('acf_field_section_styles') ) :
 			);
 
 			$this->defaults = array(
-				'margin_top'				=> '0',
-				'margin_right'			=> '0',
-				'margin_bottom'			=> '0',
-				'margin_left'				=> '0',
-				'border_top'				=> '0',
-				'border_right'			=> '0',
-				'border_bottom'			=> '0',
-				'border_left'				=> '0',
-				'border_style'			=> 'solid',
+				'margin_top'				=> 'uk-margin-top',
+				'margin_right'			=> 'uk-margin-right',
+				'margin_bottom'			=> 'uk-margin-bottom',
+				'margin_left'				=> 'uk-margin-left',
 				'padding_top'				=> '0',
 				'padding_right'			=> '0',
 				'padding_bottom'		=> '0',
@@ -49,25 +44,14 @@ if ( !class_exists('acf_field_section_styles') ) :
 				'background_style'	=> 'default',
 			);
 
-			$this->margin_top_options = apply_filters( 'acf_section_styles_border_options', array(
-				'0'			=> __( 'None', 'acf-section_styles' ),
-				'20px'			=> __( 'Default', 'acf-section_styles' ),
-				'10px'			=> __( 'Small', 'acf-section_styles' ),
-				'40px'			=> __( 'Medium', 'acf-section_styles' ),
-				'50px'			=> __( 'Large', 'acf-section_styles' ),
+			$this->margin_options = apply_filters( 'acf_section_styles_margin_options', array(
+				'remove-'			=> __( 'None', 'acf-section_styles' ),
+				''						=> __( 'Default', 'acf-section_styles' ),
+				'small-'			=> __( 'Small', 'acf-section_styles' ),
+				'medium-'			=> __( 'Medium', 'acf-section_styles' ),
+				'large-'			=> __( 'Large', 'acf-section_styles' ),
 			) );
 
-			$this->border_options = apply_filters( 'acf_section_styles_border_options', array(
-				'none'			=> __( 'None', 'acf-section_styles' ),
-				'solid'			=> __( 'Solid', 'acf-section_styles' ),
-				'dotted' 		=> __( 'Dotted', 'acf-section_styles' ),
-				'dashed' 		=> __( 'Dashed', 'acf-section_styles' ),
-				'double'		=> __( 'Double', 'acf-section_styles' ),
-				'groove'		=> __( 'Groove', 'acf-section_styles' ),
-				'ridge'			=> __( 'Ridge', 'acf-section_styles' ),
-				'inset'			=> __( 'Inset', 'acf-section_styles' ),
-				'outset'		=> __( 'Outset', 'acf-section_styles' ),
-			) );
 
 			$this->background_style_options = apply_filters( 'acf_section_styles_background_style_options', array(
 				'default'		=> __( 'Theme Default', 'acf-section_styles' ),
@@ -126,104 +110,38 @@ if ( !class_exists('acf_field_section_styles') ) :
 			), 'tr');
 
 			acf_render_field_wrap(array(
-				'type'					=> 'text',
+				'type'					=> 'select',
 				'name'					=> 'margin_right',
+				'choices'				=> $this->margin_top_options,
 				'prefix'				=> $field['prefix'],
 				'value'					=> $field['margin_right'],
-				'prepend'				=> __( 'right', 'acf'),
+				'prepend'				=> __( 'right', 'acf-section_styles' ),
 				'wrapper'				=> array(
-					'data-append' => 'margin-wrapper'
+					'data-name' 	=> 'margin-wrapper'
 				)
 			), 'tr');
 
 			acf_render_field_wrap(array(
-				'type'					=> 'text',
+				'type'					=> 'select',
 				'name'					=> 'margin_bottom',
+				'choices'				=> $this->margin_top_options,
 				'prefix'				=> $field['prefix'],
 				'value'					=> $field['margin_bottom'],
-				'prepend'				=> __( 'bottom', 'acf' ),
+				'prepend'				=> __( 'bottom', 'acf-section_styles' ),
 				'wrapper'				=> array(
-					'data-append' => 'margin-wrapper'
+					'data-name' 	=> 'margin-wrapper'
 				)
 			), 'tr');
 
 			acf_render_field_wrap(array(
-				'type'					=> 'text',
+				'type'					=> 'select',
 				'name'					=> 'margin_left',
+				'choices'				=> $this->margin_top_options,
 				'prefix'				=> $field['prefix'],
 				'value'					=> $field['margin_left'],
-				'prepend'				=> __( 'left', 'acf' ),
+				'prepend'				=> __( 'left', 'acf-section_styles' ),
 				'wrapper'				=> array(
-					'data-append' => 'margin-wrapper'
-				)
-			), 'tr');
-
-			// Default borders
-			acf_render_field_wrap(array(
-				'label'					=> __( 'Default Borders', 'acf-section_styles' ),
-				'type'					=> 'text',
-				'name'					=> 'border_top',
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_top'],
-				'prepend'				=> __( 'top', 'acf-section_styles' ),
-				'wrapper'				=> array(
-					'data-name' 	=> 'border-wrapper'
-				)
-			), 'tr');
-
-			acf_render_field_wrap(array(
-				'type'					=> 'text',
-				'name'					=> 'border_right',
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_right'],
-				'prepend'				=> __( 'right', 'acf'),
-				'wrapper'				=> array(
-					'data-append' => 'border-wrapper'
-				)
-			), 'tr');
-
-			acf_render_field_wrap(array(
-				'type'					=> 'text',
-				'name'					=> 'border_bottom',
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_bottom'],
-				'prepend'				=> __( 'bottom', 'acf' ),
-				'wrapper'				=> array(
-					'data-append' => 'border-wrapper'
-				)
-			), 'tr');
-
-			acf_render_field_wrap(array(
-				'type'					=> 'text',
-				'name'					=> 'border_left',
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_left'],
-				'prepend'				=> __( 'left', 'acf' ),
-				'wrapper'				=> array(
-					'data-append' => 'border-wrapper'
-				)
-			), 'tr');
-
-			// Default border styles
-			acf_render_field_wrap(array(
-				'label'					=> __( 'Default Border Style', 'acf-section_styles' ),
-				'type'					=> 'select',
-				'name'					=> 'border_style',
-				'choices'				=> $this->border_options,
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_style'],
-				'wrapper'				=> array(
-					'data-name' 	=> 'border-settings-wrapper'
-				)
-			), 'tr');
-
-			acf_render_field_wrap(array(
-				'type'					=> 'color_picker',
-				'name'					=> 'border_color',
-				'prefix'				=> $field['prefix'],
-				'value'					=> $field['border_color'],
-				'wrapper'				=> array(
-					'data-append' => 'border-settings-wrapper'
+					'data-name' 	=> 'margin-wrapper'
 				)
 			), 'tr');
 
@@ -344,12 +262,6 @@ if ( !class_exists('acf_field_section_styles') ) :
 				$field['value']['margin_right'] = $field['margin_right'];
 				$field['value']['margin_bottom'] = $field['margin_bottom'];
 				$field['value']['margin_left'] = $field['margin_left'];
-				$field['value']['border_top'] = $field['border_top'];
-				$field['value']['border_right'] = $field['border_right'];
-				$field['value']['border_bottom'] = $field['border_bottom'];
-				$field['value']['border_left'] = $field['border_left'];
-				$field['value']['border_color'] = $field['border_color'];
-				$field['value']['border_style'] = $field['border_style'];
 				$field['value']['padding_top'] = $field['padding_top'];
 				$field['value']['padding_right'] = $field['padding_right'];
 				$field['value']['padding_bottom'] = $field['padding_bottom'];
@@ -366,35 +278,41 @@ if ( !class_exists('acf_field_section_styles') ) :
 					<div class="acf-section-styles-margin acf-section-style-param">
 						<!-- Margin -->
 						<div class="acf-label">
-							<label for="<?php echo $field['id']; ?>_margin"><?php _e( 'margin', 'acf-section_styles' ); ?></label>
+							<label for="<?php echo $field['id']; ?>_margin"><?php _e( 'Margin', 'acf-section_styles' ); ?></label>
 						</div>
 
-						<select id="<?php echo $field['id']; ?>_margin_top" name="<?php echo esc_attr($field['name']) ?>[margin_top]">
-							<?php foreach ( $this->margin_top_options as $v => $label ): ?>
-							<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['margin_top'] ) && $field['value']['margin_top'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
+						<select class="top select-gui" id="<?php echo $field['id']; ?>_margin_top" name="<?php echo esc_attr($field['name']) ?>[margin_top]">
+							<?php foreach ( $this->margin_options as $v => $label ): ?>
+								<option value="<?php echo 'uk-margin-'.$v.'top'; ?>"<?php if ( !empty( $field['value']['margin_top'] ) && $field['value']['margin_top'] == ('uk-margin-'.$v.'top') ) echo ' selected'; ?>><?php echo $label; ?></option>
 							<?php endforeach; ?>
 						</select>
-						<input class="right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_right]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_right']; ?>" />
-						<input class="bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_bottom]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_bottom']; ?>" />
-						<input class="left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_left]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_left']; ?>" />
+
+						<select class="right select-gui" id="<?php echo $field['id']; ?>_margin_right" name="<?php echo esc_attr($field['name']) ?>[margin_right]">
+							<?php foreach ( $this->margin_options as $v => $label ): ?>
+								<option value="<?php echo 'uk-margin-'.$v.'right'; ?>"<?php if ( !empty( $field['value']['margin_right'] ) && $field['value']['margin_right'] == ('uk-margin-'.$v.'right') ) echo ' selected'; ?>><?php echo $label; ?></option>
+							<?php endforeach; ?>
+						</select>
+
+						<select class="bottom select-gui" id="<?php echo $field['id']; ?>_margin_bottom" name="<?php echo esc_attr($field['name']) ?>[margin_bottom]">
+							<?php foreach ( $this->margin_options as $v => $label ): ?>
+								<option value="<?php echo 'uk-margin-'.$v.'bottom'; ?>"<?php if ( !empty( $field['value']['margin_bottom'] ) && $field['value']['margin_bottom'] == ('uk-margin-'.$v.'bottom') ) echo ' selected'; ?>><?php echo $label; ?></option>
+							<?php endforeach; ?>
+						</select>
+
+						<select class="left select-gui" id="<?php echo $field['id']; ?>_margin_left" name="<?php echo esc_attr($field['name']) ?>[margin_left]">
+							<?php foreach ( $this->margin_options as $v => $label ): ?>
+								<option value="<?php echo 'uk-margin-'.$v.'right'; ?>"<?php if ( !empty( $field['value']['margin_left'] ) && $field['value']['margin_left'] == ('uk-margin-'.$v.'right') ) echo ' selected'; ?>><?php echo $label; ?></option>
+							<?php endforeach; ?>
+						</select>
+
 						<!-- End Margin -->
 
-						<div id="<?php echo $field['id']; ?>_border_container" class="acf-section-styles-border acf-section-style-param"<?php if ( !empty( $field['value']['border_color'] ) ) echo ' style="background-color: ' . $field['value']['border_color'] . '"'; ?>>
-							<!-- Border -->
-							<div class="acf-label">
-								<label for="<?php echo $field['id']; ?>_border"><?php _e( 'border', 'acf-section_styles' ); ?></label>
-							</div>
 
-							<input  id="<?php echo $field['id']; ?>_border" class="top" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_top]" value="<?php if ( !empty( $field['value']['border_top'] ) ) echo $field['value']['border_top']; ?>" />
-							<input class="right" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_right]" value="<?php if ( !empty( $field['value']['border_right'] ) ) echo $field['value']['border_right']; ?>" />
-							<input class="bottom" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_bottom]" value="<?php if ( !empty( $field['value']['border_bottom'] ) ) echo $field['value']['border_bottom']; ?>" />
-							<input class="left" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_left]" value="<?php if ( !empty( $field['value']['border_left'] ) ) echo $field['value']['border_left']; ?>" />
-							<!-- End Border -->
 
 							<div id="<?php echo $field['id']; ?>_padding_container" class="acf-section-styles-padding acf-section-style-param"<?php if ( !empty( $field['value']['background_color'] ) ) echo ' style="background-color: ' . $field['value']['background_color'] . '"'; ?>>
 								<!-- Padding -->
 									<div class="acf-label">
-										<label for="<?php echo $field['id']; ?>_padding"><?php _e( 'padding', 'acf-section_styles' ); ?></label>
+										<label for="<?php echo $field['id']; ?>_padding"><?php _e( 'Padding', 'acf-section_styles' ); ?></label>
 									</div>
 
 									<input  id="<?php echo $field['id']; ?>_padding" class="top" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_top]" value="<?php if ( !empty( $field['value']['padding_top'] ) ) echo $field['value']['padding_top']; ?>" />
@@ -402,8 +320,6 @@ if ( !class_exists('acf_field_section_styles') ) :
 									<input class="bottom" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_bottom]" value="<?php if ( !empty( $field['value']['padding_bottom'] ) ) echo $field['value']['padding_bottom']; ?>" />
 									<input class="left" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_left]" value="<?php if ( !empty( $field['value']['padding_left'] ) ) echo $field['value']['padding_left']; ?>" />
 									<!-- End Padding -->
-
-							</div> <!-- End .acf-section-styles-padding -->
 
 						</div> <!-- End .acf-section-styles-border -->
 
@@ -415,22 +331,7 @@ if ( !class_exists('acf_field_section_styles') ) :
 				<!-- Style Options -->
 				<div class="acf-section-styles-options">
 
-					<div class="acf-section-styles-input-row">
-						<div class="acf-section-styles-input-col-half">
-							<!-- Border Style -->
-							<div class="acf-section-styles-border-style-container">
-								<div class="acf-label">
-									<label for= ""><?php _e( 'Border Style', 'acf-section_styles' ); ?></label>
-								</div>
-
-								<select id="<?php echo $field['id']; ?>_border_style" name="<?php echo esc_attr($field['name']) ?>[border_style]">
-									<?php foreach ( $this->border_options as $v => $label ): ?>
-									<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['border_style'] ) && $field['value']['border_style'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
-									<?php endforeach; ?>
-								</select>
-							</div>
-							<!-- End Border Style -->
-						</div>
+					<div class="acf-section-styles-input-row" style="display:none;">
 						<div class="acf-section-styles-input-col-half">
 							<!-- Border Color -->
 							<div class="acf-section-styles-border-color-container">
@@ -599,24 +500,6 @@ if ( !class_exists('acf_field_section_styles') ) :
 			$value['background_position'] = $value['background_position_1'] . ' ' . $value['background_position_2'];
 
 			// format padding value
-			$value['margin'] = !empty( $value['margin_top'] ) ? $value['margin_top'] : '0';
-			$value['margin'] .= ' ';	// space
-			$value['margin'] .= !empty( $value['margin_right'] ) ? $value['margin_right'] : '0';
-			$value['margin'] .= ' ';	// space
-			$value['margin'] .= !empty( $value['margin_bottom'] ) ? $value['margin_bottom'] : '0';
-			$value['margin'] .= ' ';	// space
-			$value['margin'] .= !empty( $value['margin_left'] ) ? $value['margin_left'] : '0';
-
-			// format border value
-			$value['border_width'] = !empty( $value['border_top'] ) ? $value['border_top'] : '0';
-			$value['border_width'] .= ' ';	// space
-			$value['border_width'] .= !empty( $value['border_right'] ) ? $value['border_right'] : '0';
-			$value['border_width'] .= ' ';	// space
-			$value['border_width'] .= !empty( $value['border_bottom'] ) ? $value['border_bottom'] : '0';
-			$value['border_width'] .= ' ';	// space
-			$value['border_width'] .= !empty( $value['border_left'] ) ? $value['border_left'] : '0';
-
-			// format padding value
 			$value['padding'] = !empty( $value['padding_top'] ) ? $value['padding_top'] : '0';
 			$value['padding'] .= ' ';	// space
 			$value['padding'] .= !empty( $value['padding_right'] ) ? $value['padding_right'] : '0';
@@ -651,10 +534,6 @@ if ( !class_exists('acf_field_section_styles') ) :
 				'margin_right',
 				'margin_bottom',
 				'margin_left',
-				'border_top',
-				'border_right',
-				'border_bottom',
-				'border_left',
 				'padding_top',
 				'padding_right',
 				'padding_bottom',

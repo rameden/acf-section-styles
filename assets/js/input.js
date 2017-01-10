@@ -178,7 +178,7 @@
 		/*
 		*  acf/setup_fields (ACF4)
 		*
-		*  This event is triggered when ACF adds any new elements to the DOM. 
+		*  This event is triggered when ACF adds any new elements to the DOM.
 		*
 		*  @type	function
 		*  @since	1.0.0
