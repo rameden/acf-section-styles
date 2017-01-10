@@ -20,7 +20,12 @@
 	line-height: 1;
 	margin: 0;
 }
-
+.acf-section-width-options{
+	margin-bottom:15px;
+}
+.acf-section-width-options label{
+	position: relative;
+}
 .acf-section-styles-box-model input {
 	position: absolute;
 	width: 50px;
@@ -114,10 +119,19 @@
 /* Style Options */
 
 .acf-section-styles-options {
-	flex: 1;
-	max-width: 360px;
+	flex: 0 1 50%;
+	margin: 0 50px 0 0;
+	width: 50%;
 }
-
+.acf-section-styles-options-inner-container{
+	display: flex;
+	flex-direction: row;
+}
+.acf-section-styles-options-inner{
+	flex: 0 1 50%;
+	margin: 0 50px 0 0;
+	width: 50%;
+}
 .acf-section-styles-options label {
 	display: block;
 }
