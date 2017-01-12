@@ -306,18 +306,39 @@ acf_render_field_wrap(array(
 
 function render_field( $field ) {
 
+/*$main_builder = "main_builder";
+$main_builder_object = get_field_object($main_builder);
+
+foreach($main_builder_object['layouts'] as $layout){
+	echo $layout['name'].' '.$layout['key'].'<br>';
+}
+echo '<pre>';
+	print_r($main_builder_object);
+echo '</pre>';*/
+
 $field_id	= $field['ID'];
 
-$html = 0;
-$grid = 0;
+$layout = '';
 
 switch ($field_id) {
+	case "19":
+		$layout = "html";
+	break;
+	case "28":
+		$layout = "grid";
+	break;
+	case "30":
+		$layout = "hero";
+	break;
 	case "31":
-		$html = 1;
-		break;
-	case "88":
-		$grid = 1;
-		break;
+		$layout = "tiles";
+	break;
+	case "32":
+		$layout = "carousel";
+	break;
+	case "33":
+		$layout = "cta";
+	break;
 }
 
 // if values are empty fetch defaults
@@ -420,10 +441,26 @@ if ( empty( $field['value'] ) ) {
 	<?php endforeach; ?>
 </select>
 <?php
-if($grid == 1){
-	echo 'Grid Styles Here';
-}elseif($html == 1){
-	echo 'More HTML Here';
+
+switch ($layout) {
+	case "html":
+		echo 'HTML Styles Here';
+	break;
+	case "grid":
+		echo 'Grid Styles Here';
+	break;
+	case "hero":
+		echo 'Hero Styles Here';
+	break;
+	case "tiles":
+		echo 'Tile Styles Here';
+	break;
+	case "carousel":
+		echo 'Carousel Styles Here';
+	break;
+	case "cta":
+		echo 'CTA Styles Here';
+	break;
 }
 ?>
 </div>
