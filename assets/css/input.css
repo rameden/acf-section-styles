@@ -6,7 +6,9 @@
 }
 
 /* Box Model */
-
+.acf-field .acf-label.pb-margin-top{
+  margin: 10px 0;
+}
 .acf-section-styles-box-model {
 	flex: 0 1 50%;
 	margin: 0 50px 0 0;
@@ -257,4 +259,120 @@
 		font-size: 12px;
 		width: 30px;
 	}
+}
+
+.field_type-flexible_content .field_type-flexible_content .acf-flexible-content .layout .acf-input-table{
+	display: none;
+}
+
+.openModal{
+	position: fixed !important;
+	z-index: 30001;
+	top: 50px !important;
+	left: 50% !important;
+	margin-left: -400px !important;
+	max-height: 80%;
+	overflow: auto;
+	max-width: 800px;
+}
+
+
+.field_type-flexible_content .field_type-flexible_content .acf-flexible-content .layout .acf-input-table .acf-input-table{
+
+	display: table;
+	position: relative;
+	top: auto;
+	left: auto;
+	margin-left: 0px;
+}
+
+
+.acf-layout-modal-clickmask{
+	content: " ";
+	display: block;
+	position: fixed;
+	background: rgba(0,0,0,0.6);
+	left: 0px;
+	top:0px;
+	width: 100%;
+	height: 100%;
+	z-index: 30000;
+}
+.acf-field-flexible-content.grid_sections .values{
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.acf-field-flexible-content.grid_sections .values .acf-fc-layout-handle{
+  background: rgba(173, 216, 230, 0.5);
+}
+.acf-field-flexible-content.grid_sections .values .acf-fc-layout-controlls a:first-child,
+.acf-field-flexible-content.grid_sections .values .acf-fc-layout-controlls a:last-child{
+	display:none;
+}
+.acf-field-flexible-content.grid_sections .values .full_width{
+	width:100%;
+}
+.acf-field-flexible-content.grid_sections .values .one_tenth_width{
+	width:9%;
+}
+.acf-field-flexible-content.grid_sections .values .one_sixth_width{
+	width:15%;
+}
+.acf-field-flexible-content.grid_sections .values .one_fifth_width{
+	width:19%;
+}
+.acf-field-flexible-content.grid_sections .values .one_forth_width{
+	width:24%;
+}
+.acf-field-flexible-content.grid_sections .values .three_tenths_width{
+	width:29%;
+}
+.acf-field-flexible-content.grid_sections .values .one_third_width{
+	width:32%;
+}
+.acf-field-flexible-content.grid_sections .values .two_fifths_width{
+	width:39%;
+}
+.acf-field-flexible-content.grid_sections .values .one_half_width{
+	width:49%;
+}
+.acf-field-flexible-content.grid_sections .values .three_fifths_width{
+	width:59%;
+}
+.acf-field-flexible-content.grid_sections .values .two_thirds_width{
+	width:65%;
+}
+.acf-field-flexible-content.grid_sections .values .seven_tenths_width{
+	width:69%;
+}
+.acf-field-flexible-content.grid_sections .values .three_forths_width{
+	width:74%;
+}
+.acf-field-flexible-content.grid_sections .values .four_fifths_width{
+	width:79%;
+}
+.acf-field-flexible-content.grid_sections .values .five_sixths_width{
+	width:82%;
+}
+.acf-field-flexible-content.grid_sections .values .nine_tenths_width{
+	width:89%;
+}
+
+.acf-field-flexible-content.grid_sections .acf-flexible-content .layout:first-child{
+	margin:20px 10px 20px 0px;
+}
+
+.acf-field-flexible-content.grid_sections .acf-flexible-content .layout:last-child{
+	margin:20px 10px 20px 0px;
+}
+
+.acf-field-flexible-content.grid_sections .acf-flexible-content .layout{
+	margin:20px 10px 20px 0px;
 }

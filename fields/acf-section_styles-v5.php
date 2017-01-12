@@ -111,6 +111,28 @@ if ( !class_exists('acf_field_section_styles') ) :
 				'full_width'  			=> __( 'Full Width', 'acf-section_styles' ),
 			) );
 
+			//Grid Options
+
+			//Grid Gutter Options
+			$this->grid_gutter_options = apply_filters( 'acf_section_styles_grid_gutter_options', array(
+				''						   					  	=> __( 'Default', 'acf-section_styles' ),
+				'uk-grid-collapse'						=> __( 'Collapse Gutter', 'acf-section_styles' ),
+				'uk-grid-small'						   	=> __( 'Small Gutter', 'acf-section_styles' ),
+				'uk-grid-medium'						  => __( 'Medium Gutter', 'acf-section_styles' ),
+				'uk-grid-large'						   	=> __( 'Large Gutter', 'acf-section_styles' ),
+
+			) );
+
+			$this->grid_divider_options = apply_filters( 'acf_section_styles_grid_divider_options', array(
+				''						   					 	=> __( 'No', 'acf-section_styles' ),
+				'uk-grid-divider'						=> __( 'Yes', 'acf-section_styles' ),
+			) );
+
+			$this->grid_match_height_options = apply_filters( 'acf_section_styles_match_height_options', array(
+				''						   					 	=> __( 'No', 'acf-section_styles' ),
+				'data-uk-grid-match'				=> __( 'Yes', 'acf-section_styles' ),
+			) );
+
 			$this->settings = $settings;
 
 			// do not delete!
@@ -179,6 +201,45 @@ acf_render_field_wrap(array(
 	'prepend'				=> __( 'left', 'acf-section_styles' ),
 	'wrapper'				=> array(
 		'data-name' 	=> 'margin-wrapper'
+	)
+), 'tr');
+
+//Grid Gutter
+acf_render_field_wrap(array(
+	'label'					=> __( 'Default Grid Gutter', 'acf-section_styles' ),
+	'type'					=> 'select',
+	'name'					=> 'grid_gutter',
+	'choices'				=> $this->grid_gutter_options,
+	'prefix'				=> $field['prefix'],
+	'value'					=> $field['grid_gutter'],
+	'wrapper'				=> array(
+		'data-name' 	=> 'grid-gutter-wrapper'
+	)
+), 'tr');
+
+//Grid Divider
+acf_render_field_wrap(array(
+	'label'					=> __( 'Default Grid Gutter', 'acf-section_styles' ),
+	'type'					=> 'select',
+	'name'					=> 'grid_divider',
+	'choices'				=> $this->grid_divider_options,
+	'prefix'				=> $field['prefix'],
+	'value'					=> $field['grid_divider'],
+	'wrapper'				=> array(
+		'data-name' 	=> 'grid-divider-wrapper'
+	)
+), 'tr');
+
+//Grid Match Height
+acf_render_field_wrap(array(
+	'label'					=> __( 'Default Grid Match Height', 'acf-section_styles' ),
+	'type'					=> 'select',
+	'name'					=> 'grid_match_height',
+	'choices'				=> $this->grid_match_height_options,
+	'prefix'				=> $field['prefix'],
+	'value'					=> $field['grid_match_height'],
+	'wrapper'				=> array(
+		'data-name' 	=> 'grid-match-height-wrapper'
 	)
 ), 'tr');
 
@@ -313,18 +374,18 @@ foreach($main_builder_object['layouts'] as $layout){
 	echo $layout['name'].' '.$layout['key'].'<br>';
 }
 echo '<pre>';
-	print_r($main_builder_object);
+	print_r($field);
 echo '</pre>';*/
 
 $field_id	= $field['ID'];
-
+echo 'Field ID: '.$field_id;
 $layout = '';
 
 switch ($field_id) {
-	case "19":
+	case "31":
 		$layout = "html";
 	break;
-	case "28":
+	case "88":
 		$layout = "grid";
 	break;
 	case "30":
@@ -447,7 +508,34 @@ switch ($layout) {
 		echo 'HTML Styles Here';
 	break;
 	case "grid":
-		echo 'Grid Styles Here';
+?>
+<div class="acf-label pb-margin-top">
+	<label for="<?php echo $field['id'].'_grid_gutter';?>"><?php _e( 'Grid Gutter', 'acf-section_styles' ); ?></label>
+</div>
+<select class="grid_gutter" id="<?php echo $field['id']; ?>_grid_gutter" name="<?php echo esc_attr($field['name']) ?>[grid_gutter]">
+	<?php foreach ( $this->grid_gutter_options as $v => $label ): ?>
+		<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['grid_gutter'] ) && $field['value']['grid_gutter'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
+	<?php endforeach; ?>
+</select>
+
+<div class="acf-label pb-margin-top">
+	<label for="<?php echo $field['id'].'_grid_divider';?>"><?php _e( 'Grid Divider', 'acf-section_styles' ); ?></label>
+</div>
+<select class="grid_gutter" id="<?php echo $field['id']; ?>_grid_gutter" name="<?php echo esc_attr($field['name']) ?>[grid_divider]">
+	<?php foreach ( $this->grid_divider_options as $v => $label ): ?>
+		<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['grid_divider'] ) && $field['value']['grid_divider'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
+	<?php endforeach; ?>
+</select>
+
+<div class="acf-label pb-margin-top">
+	<label for="<?php echo $field['id'].'_grid_divider';?>"><?php _e( 'Grid Height Match', 'acf-section_styles' ); ?></label>
+</div>
+<select class="grid_match_height" id="<?php echo $field['id']; ?>_grid_match_height" name="<?php echo esc_attr($field['name']) ?>[grid_match_height]">
+	<?php foreach ( $this->grid_match_height_options as $v => $label ): ?>
+		<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['grid_match_height'] ) && $field['value']['grid_match_height'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
+	<?php endforeach; ?>
+</select>
+<?php
 	break;
 	case "hero":
 		echo 'Hero Styles Here';
